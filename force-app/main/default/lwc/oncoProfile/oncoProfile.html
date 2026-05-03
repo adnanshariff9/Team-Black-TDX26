@@ -1,0 +1,33 @@
+<template>
+    <div class="profile-card slds-p-around_x-large">
+        <div class="slds-text-align_center slds-m-bottom_large">
+            <lightning-icon icon-name="standard:user" size="large" class="brand-icon"></lightning-icon>
+            <h2 class="profile-title slds-m-top_small">Patient Profile</h2>
+        </div>
+
+        <template if:true={successMessage}>
+            <div class="slds-notify slds-notify_alert slds-theme_success slds-m-bottom_medium banner">
+                {successMessage}
+            </div>
+        </template>
+        <template if:true={errorMessage}>
+            <div class="slds-notify slds-notify_alert slds-theme_error slds-m-bottom_medium banner">
+                {errorMessage}
+            </div>
+        </template>
+
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <lightning-input type="text" label="First Name" value={userData.firstName} onchange={handleChange} data-field="firstName" class="custom-input slds-m-bottom_medium"></lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-input type="text" label="Last Name" value={userData.lastName} onchange={handleChange} data-field="lastName" class="custom-input slds-m-bottom_medium"></lightning-input>
+            </div>
+        </div>
+        <!-- Email is disabled because changing community usernames is complex -->
+        <lightning-input type="email" label="Email Address (Username)" value={userData.email} disabled class="custom-input slds-m-bottom_medium"></lightning-input>
+        <lightning-input type="tel" label="Phone Number" value={userData.phone} onchange={handleChange} data-field="phone" class="custom-input slds-m-bottom_large"></lightning-input>
+        
+        <button class="brand-btn" onclick={handleSave}>Save Changes</button>
+    </div>
+</template>

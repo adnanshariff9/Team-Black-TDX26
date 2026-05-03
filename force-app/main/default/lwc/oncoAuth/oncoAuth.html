@@ -1,0 +1,80 @@
+<template>
+    <div class="auth-container slds-p-around_large">
+        <div class="auth-card slds-p-around_x-large">
+            
+            <!-- Header -->
+            <div class="slds-text-align_center slds-m-bottom_large">
+                <lightning-icon icon-name="standard:healthcare" size="large" class="brand-icon"></lightning-icon>
+                <h1 class="auth-title slds-m-top_small">{headerText}</h1>
+                <p class="auth-subtitle">{subHeaderText}</p>
+            </div>
+
+            <!-- Error Message -->
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-theme_error slds-m-bottom_medium error-banner">
+                    {errorMessage}
+                </div>
+            </template>
+            <template if:true={successMessage}>
+                <div class="slds-notify slds-notify_alert slds-theme_success slds-m-bottom_medium success-banner">
+                    {successMessage}
+                </div>
+            </template>
+
+            <!-- Spinner -->
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+
+            <!-- LOGIN VIEW -->
+            <template if:true={isLogin}>
+                <lightning-input type="email" label="Email Address" value={email} onchange={handleInputChange} data-field="email" class="custom-input slds-m-bottom_medium"></lightning-input>
+                <lightning-input type="password" label="Password" value={password} onchange={handleInputChange} data-field="password" class="custom-input slds-m-bottom_medium"></lightning-input>
+                
+                <div class="slds-text-align_right slds-m-bottom_medium">
+                    <a onclick={toggleForgot} class="text-link">Forgot Password?</a>
+                </div>
+                
+                <button class="brand-btn slds-m-bottom_medium" onclick={handleLogin}>Log In</button>
+                
+                <div class="slds-text-align_center">
+                    <span class="text-muted">Don't have an account? </span>
+                    <a onclick={toggleRegister} class="text-link font-bold">Sign Up</a>
+                </div>
+            </template>
+
+            <!-- REGISTER VIEW -->
+            <template if:true={isRegister}>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning-input type="text" label="First Name" value={firstName} onchange={handleInputChange} data-field="firstName" class="custom-input slds-m-bottom_medium"></lightning-input>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-input type="text" label="Last Name" value={lastName} onchange={handleInputChange} data-field="lastName" class="custom-input slds-m-bottom_medium"></lightning-input>
+                    </div>
+                </div>
+                <lightning-input type="email" label="Email Address" value={email} onchange={handleInputChange} data-field="email" class="custom-input slds-m-bottom_medium"></lightning-input>
+                <lightning-input type="password" label="Create Password" value={password} onchange={handleInputChange} data-field="password" class="custom-input slds-m-bottom_large"></lightning-input>
+                
+                <button class="brand-btn slds-m-bottom_medium" onclick={handleRegister}>Create Account</button>
+                
+                <div class="slds-text-align_center">
+                    <span class="text-muted">Already have an account? </span>
+                    <a onclick={toggleLogin} class="text-link font-bold">Log In</a>
+                </div>
+            </template>
+
+            <!-- FORGOT PASSWORD VIEW -->
+            <template if:true={isForgot}>
+                <lightning-input type="email" label="Email Address" value={email} onchange={handleInputChange} data-field="email" class="custom-input slds-m-bottom_large"></lightning-input>
+                
+                <button class="brand-btn slds-m-bottom_medium" onclick={handleForgot}>Send Reset Link</button>
+                
+                <div class="slds-text-align_center">
+                    <a onclick={toggleLogin} class="text-link font-bold">Back to Login</a>
+                </div>
+            </template>
+
+        </div>
+    </div>
+</template>

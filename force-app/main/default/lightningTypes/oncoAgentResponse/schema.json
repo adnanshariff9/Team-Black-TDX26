@@ -1,0 +1,5 @@
+{
+  "title": "Onco Agent Response",
+  "description": "Structured response from the Onco Global appointment Agentforce action.",
+  "lightning:type": "@apexClassType/c__OncoAgentResponse"
+}

@@ -1,0 +1,93 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background-color: transparent;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+
+.auth-card {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Typography */
+.auth-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #082d54;
+}
+
+.auth-subtitle {
+    color: #6b7c93;
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+.text-muted {
+    color: #6b7c93;
+}
+
+.text-link {
+    color: #0b70d8;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.text-link:hover {
+    color: #014486;
+    text-decoration: underline;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+/* Custom Inputs to override SLDS defaults slightly */
+.custom-input {
+    --sds-c-input-color-border: #d4dce6;
+    --sds-c-input-radius-border: 8px;
+    --sds-c-input-shadow-focus: 0 0 0 3px rgba(11, 112, 216, 0.2);
+}
+
+/* The Beautiful Brand Button */
+.brand-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #0b70d8 0%, #014486 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(11, 112, 216, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(11, 112, 216, 0.4);
+}
+
+.brand-btn:active {
+    transform: translateY(1px);
+}
+
+/* Notifications */
+.error-banner {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.success-banner {
+    border-radius: 8px;
+    font-weight: 500;
+}

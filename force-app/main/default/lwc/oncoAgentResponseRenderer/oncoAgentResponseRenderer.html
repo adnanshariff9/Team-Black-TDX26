@@ -1,0 +1,107 @@
+<template>
+    <article class={cardClass}>
+        <header class="response-header">
+            <lightning-icon icon-name={iconName} size="small" class="status-icon"></lightning-icon>
+            <div>
+                <h2>{displayTitle}</h2>
+                <p>{displayMessage}</p>
+            </div>
+        </header>
+
+        <template if:true={showCombinationNotice}>
+            <div class="notice">
+                Select a hospital first, then a department. Doctors are checked against the selected hospital before slots are shown.
+            </div>
+        </template>
+
+        <template if:true={copiedMessage}>
+            <div class="copy-status">{copiedMessage}</div>
+        </template>
+
+        <template if:true={hasClinics}>
+            <section class="response-section">
+                <h3>Hospitals</h3>
+                <div class="item-grid">
+                    <template for:each={clinicItems} for:item="clinic">
+                        <div key={clinic.Id} class={clinic.itemClass}>
+                            <strong>{clinic.Name}</strong>
+                            <span>{clinic.City}</span>
+                            <button class="copy-button" data-kind="clinic" data-id={clinic.Id} data-copy-key={clinic.copyKey} data-prompt={clinic.prompt} onclick={handleCopy}>
+                                {clinic.buttonLabel}
+                            </button>
+                        </div>
+                    </template>
+                </div>
+            </section>
+        </template>
+
+        <template if:true={hasDepartments}>
+            <section class="response-section">
+                <h3>Departments</h3>
+                <div class="pill-row">
+                    <template for:each={departmentItems} for:item="department">
+                        <button key={department.Id} class={department.buttonClass} disabled={department.disabled} data-kind="department" data-id={department.Id} data-copy-key={department.copyKey} data-prompt={department.prompt} onclick={handleCopy}>
+                            {department.buttonLabel}
+                        </button>
+                    </template>
+                </div>
+            </section>
+        </template>
+
+        <template if:true={hasDoctors}>
+            <section class="response-section">
+                <h3>Doctors</h3>
+                <div class="notice subtle">
+                    If you do not have a specific doctor in mind and want to see the first available slots, do not select a doctor.
+                </div>
+                <div class="item-grid">
+                    <template for:each={doctorItems} for:item="doctor">
+                        <div key={doctor.Id} class={doctor.itemClass}>
+                            <strong>{doctor.displayName}</strong>
+                            <span>{doctor.ResourceType}</span>
+                            <button class="copy-button" disabled={doctor.disabled} data-kind="doctor" data-id={doctor.Id} data-copy-key={doctor.copyKey} data-prompt={doctor.prompt} onclick={handleCopy}>
+                                {doctor.buttonLabel}
+                            </button>
+                        </div>
+                    </template>
+                </div>
+            </section>
+        </template>
+
+        <template if:true={hasAppointments}>
+            <section class="response-section">
+                <h3>Appointments</h3>
+                <div class="item-grid">
+                    <template for:each={appointmentItems} for:item="appointment">
+                        <div key={appointment.Id} class="result-item">
+                            <strong>{appointment.AppointmentNumber}</strong>
+                            <span>{appointment.SchedStartTime}</span>
+                            <span>{appointment.Status}</span>
+                            <div class="button-row">
+                                <button class="copy-button" data-copy-key={appointment.rescheduleKey} data-prompt={appointment.reschedulePrompt} onclick={handleCopy}>
+                                    {appointment.rescheduleLabel}
+                                </button>
+                                <button class="copy-button secondary" data-copy-key={appointment.cancelKey} data-prompt={appointment.cancelPrompt} onclick={handleCopy}>
+                                    {appointment.cancelLabel}
+                                </button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </section>
+        </template>
+
+        <template if:true={hasSlots}>
+            <section class="response-section">
+                <h3>Available Times</h3>
+                <div class="pill-row">
+                    <template for:each={slotLabels} for:item="slot">
+                        <button key={slot.key} class={slot.buttonClass} data-copy-key={slot.copyKey} data-prompt={slot.prompt} onclick={handleCopy}>
+                            {slot.buttonLabel}
+                        </button>
+                    </template>
+                </div>
+            </section>
+        </template>
+    </article>
+</template>

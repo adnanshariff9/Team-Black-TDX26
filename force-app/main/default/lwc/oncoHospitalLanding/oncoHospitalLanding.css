@@ -1,0 +1,95 @@
+.onco-container {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+/* Hero Section */
+.hero-banner {
+    background: linear-gradient(135deg, #014486 0%, #0b70d8 100%);
+    padding: 100px 20px;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 10px 30px rgba(11, 112, 216, 0.2);
+}
+
+.hero-title {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    color: #e0f0ff;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Typography & Layout */
+.section-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #082d54;
+}
+
+.heading-divider {
+    width: 60px;
+    height: 4px;
+    background-color: #0b70d8;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.text-muted {
+    color: #4a5c70;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* Service Cards */
+.service-card {
+    border: none;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(11, 112, 216, 0.15);
+}
+
+.card-title {
+    color: #014486;
+    font-weight: 700;
+}
+
+.card-text {
+    color: #6b7c93;
+    line-height: 1.5;
+}
+
+/* Procedures Section */
+.procedure-list li {
+    font-size: 1.1rem;
+    padding: 6px 0;
+    color: #082d54;
+    font-weight: 500;
+}
+
+.modern-img {
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}

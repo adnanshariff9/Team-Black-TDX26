@@ -1,0 +1,36 @@
+.profile-card {
+    background-color: #ffffff; /* Gives it the solid white background */
+    border-radius: 24px; /* Matches the rounded corners of your auth card */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08); /* Gives it that floating popup shadow */
+    width: 100%;
+    max-width: 500px; 
+    margin: 0 auto; /* Centers it if the parent container is wide */
+    position: relative;
+    overflow: hidden;
+}
+
+/* You might also want to bring over your custom input and brand button styles if they aren't globally shared */
+.custom-input {
+    --sds-c-input-color-border: #d4dce6;
+    --sds-c-input-radius-border: 8px;
+    --sds-c-input-shadow-focus: 0 0 0 3px rgba(11, 112, 216, 0.2);
+}
+
+.brand-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #0b70d8 0%, #014486 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(11, 112, 216, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(11, 112, 216, 0.4);
+}

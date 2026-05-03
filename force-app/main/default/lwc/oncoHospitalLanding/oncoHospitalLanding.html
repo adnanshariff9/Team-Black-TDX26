@@ -1,0 +1,102 @@
+<template>
+    <div class="onco-container">
+        <!-- SMART NAV BAR -->
+        <header class="smart-nav slds-p-around_medium slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+            <div class="nav-brand">
+                <lightning-icon icon-name="standard:first_non_empty" size="medium" class="slds-m-right_small"></lightning-icon>
+                <strong>Onco Global</strong>
+            </div>
+            
+            <div class="nav-actions">
+                <!-- If Guest -->
+                <template if:true={isGuest}>
+                    <button class="btn-outline" onclick={openAuth}>Login / Sign Up</button>
+                </template>
+                
+                <!-- If Logged In -->
+                <template if:false={isGuest}>
+                    <span class="welcome-text slds-m-right_medium">Welcome, <strong>{userData.firstName}</strong></span>
+                    <button class="btn-outline slds-m-right_small" onclick={openProfile}>My Profile</button>
+                    <button class="btn-solid" onclick={handleLogout}>Logout</button>
+                </template>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-banner slds-p-around_xx-large slds-text-align_center">
+            <div class="hero-content slds-m-bottom_large">
+                <h1 class="hero-title slds-m-bottom_small">Welcome to Onco Global</h1>
+                <p class="hero-subtitle">Leading the future of specialized oncology, compassionate care, and medical innovation.</p>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="slds-p-around_xx-large slds-theme_default">
+            <div class="slds-text-align_center slds-m-bottom_x-large">
+                <h2 class="section-heading">Our Specialized Departments</h2>
+                <div class="heading-divider"></div>
+            </div>
+            
+            <div class="slds-grid slds-wrap slds-gutters">
+                <template for:each={services} for:item="srv">
+                    <div key={srv.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4 slds-m-bottom_medium">
+                        <div class="slds-box service-card slds-text-align_center">
+                            <lightning-icon icon-name={srv.icon} size="large" class="slds-m-bottom_medium service-icon"></lightning-icon>
+                            <h3 class="slds-text-heading_small slds-m-bottom_x-small card-title">{srv.title}</h3>
+                            <p class="slds-text-body_regular card-text">{srv.description}</p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- Procedures Highlight -->
+        <section class="slds-p-around_xx-large slds-theme_shade">
+             <div class="slds-grid slds-wrap slds-gutters slds-grid_vertical-align-center content-wrapper">
+                 <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 slds-p-around_medium">
+                     <h2 class="section-heading slds-m-bottom_medium">Advanced Procedures & Care</h2>
+                     <p class="slds-text-body_regular slds-m-bottom_medium text-muted">
+                         Our world-class facilities are equipped with the latest medical technology. Book an appointment with our AI concierge today to discuss your treatment options.
+                     </p>
+                     <ul class="slds-list_dotted slds-m-bottom_large text-muted procedure-list">
+                         <li>Robotic-Assisted Tumor Excision</li>
+                         <li>Bone Marrow Transplants</li>
+                         <li>Precision CAR T-cell Immunotherapy</li>
+                         <li>Comprehensive Pediatric Oncology Care</li>
+                     </ul>
+                 </div>
+                 <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 slds-text-align_center slds-p-around_medium">
+                     <!-- Using a high-quality unsplash placeholder image -->
+                     <img src="https://kmchattavar.com/wp-content/uploads/2024/01/Main-Image-Varian-Linear-Accelerator-scaled.jpg?q=80&w=1000&auto=format&fit=crop" alt="Hospital Facility" class="modern-img" />
+                 </div>
+             </div>
+        </section>
+
+        <template if:true={showAuthModal}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open custom-modal">
+                <div class="slds-modal__container">
+                    <button class="slds-button slds-button_icon slds-modal__close close-btn" title="Close" onclick={closeModals}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                    </button>
+                    <!-- Calls your oncoAuth LWC -->
+                    <c-onco-auth></c-onco-auth> 
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open custom-backdrop"></div>
+        </template>
+
+        <!-- PROFILE MODAL OVERLAY -->
+        <template if:true={showProfileModal}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open custom-modal">
+                <div class="slds-modal__container">
+                    <button class="slds-button slds-button_icon slds-modal__close close-btn" title="Close" onclick={closeModals}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                    </button>
+                    <!-- Calls your new oncoProfile LWC and passes data down -->
+                    <c-onco-profile initial-data={userData}></c-onco-profile>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open custom-backdrop"></div>
+        </template>
+    </div>
+</template>
